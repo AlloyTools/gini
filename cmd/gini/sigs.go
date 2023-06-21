@@ -13,7 +13,7 @@ import (
 var sigs = make(chan os.Signal, 1)
 
 func init() {
-	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM, syscall.SIGUSR1)
+	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 	go func() {
 		for {
 			sig := <-sigs
@@ -21,8 +21,6 @@ func init() {
 			case syscall.SIGINT, syscall.SIGTERM:
 				fmt.Println("\nc interrupted\ns UNKNOWN")
 				os.Exit(1)
-			case syscall.SIGUSR1:
-				fmt.Println("\nc interrupted USR1")
 			}
 		}
 	}()
