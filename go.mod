@@ -1,3 +1,3 @@
-module github.com/go-air/gini
+module github.com/alloytools/gini
 
 go 1.16
